@@ -22,15 +22,12 @@ public class VaccinationCenter {
 	private String centername;
 
 	@NotNull(message = "City can not be null")
-	
 	private String city;
 
 	@NotNull(message = "Address can not be null")
-	
 	private String address;
 
 	@NotNull(message = "State can not be null")
-
 	private String state;
 
 	@NotNull(message = "Pincode can not be null")
@@ -103,7 +100,10 @@ public class VaccinationCenter {
 			@NotNull(message = "State can not be null") String state,
 			@NotNull(message = "Pincode can not be null") @Size(min = 6, max = 8) String pincode,
 			VaccineInventory vaccineinventory) {
+<<<<<<< HEAD
 		super();
+=======
+>>>>>>> 1f53cfbfb11b156cb4c7c84f6dc51476e1b5adfa
 		this.centerId = centerId;
 		this.centername = centername;
 		this.city = city;
@@ -113,6 +113,13 @@ public class VaccinationCenter {
 		this.vaccineinventory = vaccineinventory;
 	}
 
+<<<<<<< HEAD
+=======
+	public VaccinationCenter() {
+		// TODO Auto-generated constructor stub
+	}
+
+>>>>>>> 1f53cfbfb11b156cb4c7c84f6dc51476e1b5adfa
 	@Override
 	public String toString() {
 		return "VaccinationCenter [centerId=" + centerId + ", centername=" + centername + ", city=" + city
@@ -120,7 +127,11 @@ public class VaccinationCenter {
 				+ vaccineinventory + "]";
 	}
 	
+<<<<<<< HEAD
 	public VaccinationCenter() {
 		
 	}
+=======
+	
+>>>>>>> 1f53cfbfb11b156cb4c7c84f6dc51476e1b5adfa
 }
