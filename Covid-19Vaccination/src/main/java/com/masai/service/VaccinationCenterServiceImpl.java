@@ -3,9 +3,12 @@ package com.masai.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.security.auth.login.LoginException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.masai.exception.VaccineCenterNotFoundException;
 import com.masai.exception.VaccineCentreException;
 import com.masai.model.VaccinationCenter;
 import com.masai.repo.VaccineCenterDao;
@@ -33,7 +36,7 @@ public class VaccinationCenterServiceImpl implements  VaccinationCenterService{
 		
 		List<VaccinationCenter> list = vDao.findAll();
 		if (list.size() == 0)
-			throw new VaccineCenterException("No Vaccination Center Found...");
+			throw new VaccineCentreException("No Vaccination Center Found...");
 		return list;
 	}
 
@@ -63,7 +66,7 @@ public class VaccinationCenterServiceImpl implements  VaccinationCenterService{
 		Optional<VaccinationCenter> vc = vDao.findById(center.getCenterId());
 
 		if (vc.isPresent()) {
-			throw new VaccineCenterException("Vaccination center is present with the same Id");
+			throw new VaccineCentreException("Vaccination center is present with the same Id");
 		}
 		return vDao.save(center);
 	}
