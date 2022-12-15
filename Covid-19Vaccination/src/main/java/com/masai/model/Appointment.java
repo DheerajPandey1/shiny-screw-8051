@@ -38,7 +38,7 @@ public class Appointment {
 	private LocalDate dateofBooking;
 	
 	private Slot slot;
-	private Boolean bookingStatus;
+	private Boolean bookingStatus;	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
@@ -46,4 +46,6 @@ public class Appointment {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private VaccinationCenter vaccinationCenter;
+	
+	
 }
