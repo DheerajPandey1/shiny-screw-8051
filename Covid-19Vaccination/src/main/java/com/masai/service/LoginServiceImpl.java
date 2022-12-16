@@ -3,6 +3,7 @@ package com.masai.service;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.masai.exception.LoginException;
 import com.masai.model.Admin;
@@ -18,6 +19,7 @@ import com.masai.repo.CustomerLoginSessionDao;
 
 import net.bytebuddy.utility.RandomString;
 
+@Service
 public class LoginServiceImpl implements LoginService{
 
 	@Autowired

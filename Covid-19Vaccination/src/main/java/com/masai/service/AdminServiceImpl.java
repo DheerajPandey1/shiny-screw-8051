@@ -3,11 +3,13 @@ package com.masai.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.masai.exception.AdminException;
 import com.masai.model.Admin;
 import com.masai.repo.AdminDao;
 
+@Service
 public class AdminServiceImpl implements AdminService{
 
 	
