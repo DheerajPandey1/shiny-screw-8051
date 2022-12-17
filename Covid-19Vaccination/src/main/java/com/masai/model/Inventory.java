@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -27,8 +28,13 @@ public class Inventory {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy= "inventory")
 	private List<VaccinationCenter> ListvaccinationCenter;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy= "inventory")
-	private List<VaccineCount> vaccinecountList;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy= "inventory")
+	private VaccineCount vaccinecountList;
+	
+	
+	
+	
+	
 
 	public Integer getInventoryId() {
 		return inventoryId;
@@ -54,16 +60,16 @@ public class Inventory {
 		ListvaccinationCenter = listvaccinationCenter;
 	}
 
-	public List<VaccineCount> getVaccinecountList() {
+	public VaccineCount getVaccinecountList() {
 		return vaccinecountList;
 	}
 
-	public void setVaccinecountList(List<VaccineCount> vaccinecountList) {
+	public void setVaccinecountList(VaccineCount vaccinecountList) {
 		this.vaccinecountList = vaccinecountList;
 	}
 
 	public Inventory(Integer inventoryId, @NotNull(message = "Date should not be Null") LocalDate date,
-			List<VaccinationCenter> listvaccinationCenter, List<VaccineCount> vaccinecountList) {
+			List<VaccinationCenter> listvaccinationCenter, VaccineCount vaccinecountList) {
 		super();
 		this.inventoryId = inventoryId;
 		this.date = date;

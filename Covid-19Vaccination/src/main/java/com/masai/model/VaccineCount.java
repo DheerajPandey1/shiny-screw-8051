@@ -20,12 +20,12 @@ public class VaccineCount {
 	private Integer quantity;
 	private Double price;
 	
-	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
+//	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
 	private Inventory inventory;
 	
 	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,mappedBy="vaccineCount")
 	private Vaccine vaccine;
 
 	public Integer getVaccinecountId() {

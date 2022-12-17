@@ -23,14 +23,14 @@ public class VaccineController {
 	@Autowired
 	private VaccineService vs;
 	
-	@PostMapping("/register/{uuid}")
-	public ResponseEntity<Vaccine> register(@RequestBody Vaccine v,  @PathVariable("uuid") String uuid) throws LoginException, VaccineNotFoundException{
+	@PostMapping("/addVaccine/{uuid}")
+	public ResponseEntity<Vaccine> addVaccine(@RequestBody Vaccine v,  @PathVariable("uuid") String uuid) throws LoginException, VaccineNotFoundException{
 			
 		return new ResponseEntity<>(vs.addVaccine(v, uuid),HttpStatus.ACCEPTED)	;	
 	}
 	
-	@DeleteMapping("/deleteVaccine/{uuid}")
-	public ResponseEntity<String> deleteVaccine(@RequestBody Vaccine v,  @PathVariable("uuid") String uuid) throws LoginException, VaccineNotFoundException{
+	@DeleteMapping("/deleteVaccine/{id}/{uuid}")
+	public ResponseEntity<String> deleteVaccine(@PathVariable("id") Integer v,  @PathVariable("uuid") String uuid) throws LoginException, VaccineNotFoundException{
 		
 		boolean res=vs.deleteVaccine(v, uuid);
 		
