@@ -1,5 +1,6 @@
 package com.masai.service;
 
+import java.time.LocalDate;
 import java.util.List;  
 import java.util.Optional;
 
@@ -10,9 +11,12 @@ import com.masai.exception.AppointmentException;
 import com.masai.exception.MemberNotFoundException;
 import com.masai.model.AdminLoginSession;
 import com.masai.model.Appointment;
+import com.masai.model.ChooseCenter;
 import com.masai.model.Customer;
 import com.masai.model.CustomerLoginSession;
+import com.masai.model.IdCard;
 import com.masai.model.Member;
+import com.masai.model.Slot;
 import com.masai.repo.AdminLoginSessionDao;
 import com.masai.repo.AppointmentDao;
 import com.masai.repo.CustomerDao;
@@ -79,22 +83,39 @@ AdminLoginSession adminLoginSession = adminLoginSessionDao.findByUuid(key);
 	}
 
 	@Override
-	public Appointment addAppointment(Appointment appoinment, String key)
+	public Appointment addAppointment( String key)
 			throws MemberNotFoundException, AppointmentException {
 		
 		
 			// TODO Auto-generated method stub
 		
 //	          AdminLoginSession adminLoginSession = adminLoginSessionDao.findByUuid(key);
+		
+		
 			
-			CustomerLoginSession customerLoginSession = clsd.findByUuid(key);
-				
-//				if( customerLoginSession==null) {
-//					
-//					throw new RuntimeException("Unauthorised access");
-//				}
-				
-				return appointmentDao.save(appoinment) ;
+//			CustomerLoginSession customerLoginSession = clsd.findByUuid(key);
+		 
+		
+		CustomerLoginSession clas =clsd.findByUuid(key);
+			Integer i= clas.getCustomerId();
+			Optional<Customer> c=cdao.findById(i);
+			Customer cr = c.get();
+		  
+			IdCard idcar=cr.getIdcard();
+			Member memb=idcar.getMember();
+			
+		Appointment ap=new Appointment();
+		memb.setAppointment(ap);
+		ap.setMobileNumber(memb.getVaccineRegistration().getMobileNumber());
+		ap.setDateofBooking(LocalDate.now());
+		
+	
+		ap.setSlot(Slot.SLOT1);
+		ap.setBookingStatus(true);
+		ap.setChoosecenter(ChooseCenter.Sanjeevni);
+		
+		
+				return appointmentDao.save(ap);
 
 			
 	}

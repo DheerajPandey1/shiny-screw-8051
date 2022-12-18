@@ -45,8 +45,25 @@ public class Member {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Vaccine vaccine;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "member")
-	private  List<Appointment> listofappointments;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "member")
+	private  Appointment appointment;
+
+
+
+public Member(Integer memberId, Boolean dose1status, Boolean dose2status, LocalDate dose1date, LocalDate dose2date,
+			IdCard idCard, VaccineRegistration vaccineRegistration, Vaccine vaccine, Appointment appointment) {
+		super();
+		this.memberId = memberId;
+		this.dose1status = dose1status;
+		this.dose2status = dose2status;
+		this.dose1date = dose1date;
+		this.dose2date = dose2date;
+		this.idCard = idCard;
+		this.vaccineRegistration = vaccineRegistration;
+		this.vaccine = vaccine;
+		this.appointment = appointment;
+	}
+
 
 	public Integer getMemberId() {
 		return memberId;
@@ -112,37 +129,16 @@ public class Member {
 		this.vaccine = vaccine;
 	}
 
-	public List<Appointment> getListofappointments() {
-		return listofappointments;
+	public Appointment getAppointment() {
+		return appointment;
 	}
 
-	public void setListofappointments(List<Appointment> listofappointments) {
-		this.listofappointments = listofappointments;
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
 	}
 
-	public Member(Integer memberId, Boolean dose1status, Boolean dose2status, LocalDate dose1date, LocalDate dose2date,
-			IdCard idCard, VaccineRegistration vaccineRegistration, Vaccine vaccine,
-			List<Appointment> listofappointments) {
-		super();
-		this.memberId = memberId;
-		this.dose1status = dose1status;
-		this.dose2status = dose2status;
-		this.dose1date = dose1date;
-		this.dose2date = dose2date;
-		this.idCard = idCard;
-		this.vaccineRegistration = vaccineRegistration;
-		this.vaccine = vaccine;
-		this.listofappointments = listofappointments;
-	}
 
-	@Override
-	public String toString() {
-		return "Member [memberId=" + memberId + ", dose1status=" + dose1status + ", dose2status=" + dose2status
-				+ ", dose1date=" + dose1date + ", dose2date=" + dose2date + ", idCard=" + idCard
-				+ ", vaccineRegistration=" + vaccineRegistration + ", vaccine=" + vaccine + ", listofappointments="
-				+ listofappointments + "]";
-	}
-	
+
 	public Member() {
 		
 	}
