@@ -13,6 +13,6 @@ public interface VaccineService {
 	public Vaccine getVaccineById(Integer vId,String uuid) throws VaccineNotFoundException,LoginException ;
 	public Vaccine addVaccine(Vaccine v,String uuid) throws VaccineNotFoundException,LoginException ;
 	public Vaccine updateVaccine(Vaccine v,String uuid) throws VaccineNotFoundException,LoginException ;
-	public boolean deleteVaccine(Vaccine v,String uuid) throws VaccineNotFoundException,LoginException ;
+	public boolean deleteVaccine(Integer id,String uuid) throws VaccineNotFoundException,LoginException ;
 	
 }

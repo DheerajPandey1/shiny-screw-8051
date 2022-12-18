@@ -23,7 +23,7 @@ public class Vaccine {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Member member;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private VaccineCount vaccineCount;
 
