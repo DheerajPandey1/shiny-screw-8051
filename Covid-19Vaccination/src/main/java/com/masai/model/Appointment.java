@@ -5,10 +5,13 @@ import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -25,9 +28,9 @@ public class Appointment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long bookingId;
 	
-	@Size(min = 9  , max = 10 , message = "Please Enter valid mobile no ")
-	@NotNull(message = "Mobile number is mandatory")
-	@Pattern(regexp =  "^[7-9][0-9]9$")
+//	@Size(min = 9  , max = 10 , message = "Please Enter valid mobile no ")
+//	@NotNull(message = "Mobile number is mandatory")
+//	@Pattern(regexp =  "^[7-9][0-9]9$")
 	@NotEmpty(message = "Mobile number is mandatory")
 	@Column(unique = true)
 	private String mobileNumber;
@@ -35,13 +38,16 @@ public class Appointment {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dateofBooking;
 	
+	@Enumerated(EnumType.STRING)
 	private Slot slot;
+	
 	private Boolean bookingStatus;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Member member;
 	
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
 	private VaccinationCenter vaccinationCenter;
 
@@ -102,7 +108,7 @@ public class Appointment {
 	}
 
 	public Appointment(Long bookingId,
-			@Size(min = 9, max = 10, message = "Please Enter valid mobile no ") @NotNull(message = "Mobile number is mandatory") @Pattern(regexp = "^[7-9][0-9]9$") @NotEmpty(message = "Mobile number is mandatory") String mobileNumber,
+		 @NotNull(message = "Mobile number is mandatory")  @NotEmpty(message = "Mobile number is mandatory") String mobileNumber,
 			LocalDate dateofBooking, Slot slot, Boolean bookingStatus, Member member,
 			VaccinationCenter vaccinationCenter) {
 		super();

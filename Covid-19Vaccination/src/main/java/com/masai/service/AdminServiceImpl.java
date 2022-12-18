@@ -1,6 +1,6 @@
 package com.masai.service;
 
-import java.util.Optional;
+import java.util.Optional; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +14,12 @@ public class AdminServiceImpl implements AdminService{
 
 	
 	@Autowired
-	AdminDao adminDao ;
+	private AdminDao adminDao ;
 	
 	@Override
 	public Admin registerAdmin(Admin admin) {
 		
+//		System.out.println(admin);
 		
 		return adminDao.save(admin) ;
 		

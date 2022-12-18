@@ -11,7 +11,7 @@ import com.masai.model.Member;
 @Service
 public interface MemberService {
 
-	public List<Member> GetallTheMembers(String key) throws MemberNotRegisterException;
+
     
 	public Member getMemberById(Integer idcardid,String key) throws MemberNotFoundException;
 
@@ -19,7 +19,7 @@ public interface MemberService {
 
 	public Member getMemberByPanNo(String panNo,String key) throws MemberNotFoundException;
 	
-	public Member addMemberbyMobileNo(Member member, String mobileNo,String key) throws MemberNotFoundException;
+	public Member addMember(Member member) throws MemberNotFoundException;
 
 	public Member updateMember(Member member,String key) throws MemberNotFoundException;
 

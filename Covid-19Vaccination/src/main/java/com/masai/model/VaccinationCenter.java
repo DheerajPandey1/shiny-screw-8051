@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -13,7 +14,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class VaccinationCenter {
+public class VaccinationCenter{
 
 	
 	@Id
@@ -39,6 +40,9 @@ public class VaccinationCenter {
 	@NotBlank(message = "Pincode is Mandatory")
 	@Size(min = 6, max = 8)
 	private String pincode;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Admin admin;
 	
 	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)

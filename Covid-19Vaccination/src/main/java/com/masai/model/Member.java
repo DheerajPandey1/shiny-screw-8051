@@ -1,6 +1,6 @@
 package com.masai.model;
 
-import java.time.LocalDate;
+import java.time.LocalDate; 
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.AssertFalse;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,9 +21,11 @@ public class Member {
 
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)	
 	private Integer memberId;
+	
 	private Boolean dose1status;
+
 	private Boolean dose2status;
 	
 	

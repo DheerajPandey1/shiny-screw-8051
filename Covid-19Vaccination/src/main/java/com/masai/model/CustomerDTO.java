@@ -1,6 +1,6 @@
 package com.masai.model;
 
-import javax.persistence.Column;
+import javax.persistence.Column; 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
