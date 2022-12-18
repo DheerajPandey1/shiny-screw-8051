@@ -3,15 +3,21 @@ package com.masai.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.LoginException;
 import com.masai.exception.VaccineRegistrationException;
+import com.masai.model.Customer;
 import com.masai.model.CustomerLoginSession;
+import com.masai.model.IdCard;
+import com.masai.model.Member;
 import com.masai.model.VaccineRegistration;
+import com.masai.repo.CustomerDao;
 import com.masai.repo.CustomerLoginSessionDao;
+import com.masai.repo.MemberDao;
 import com.masai.repo.VaccineRegistrationDao;
 
 
@@ -19,6 +25,17 @@ import com.masai.repo.VaccineRegistrationDao;
 @Service
 public class VaccineRegistrationImpl implements VaccineRegistrationService {
 	  
+	@Autowired
+	private CustomerDao cd;
+	
+	@Autowired
+	private MemberDao mdao;
+	
+	@Autowired
+	private CustomerLoginSessionDao clsd;
+	
+	
+	
 		@Autowired
 		private VaccineRegistrationDao daoVacRegistration;
 		
@@ -27,6 +44,7 @@ public class VaccineRegistrationImpl implements VaccineRegistrationService {
 		
 		@Autowired
 		private CustomerLoginSessionDao cdao;
+		
 		@Override
 		public List<VaccineRegistration> allVaccineRegistration(String key) throws VaccineRegistrationException {
 			  
@@ -42,21 +60,34 @@ public class VaccineRegistrationImpl implements VaccineRegistrationService {
 		
 		
 		@Override
-		public VaccineRegistration addVaccineRegistration(String mobile,String key) throws VaccineRegistrationException {
+		public Member addVaccineRegistration(String mobile,String key) throws VaccineRegistrationException {
 			   
 			  CustomerLoginSession cls= cdao.findByUuid(key);
+			  
 			  if(cls==null)
 			  {
 				  throw new LoginException("Unauthorised access denied..");
 			  }
 			  
+			  CustomerLoginSession clas =clsd.findByUuid(key);
+				Integer i= clas.getCustomerId();
+				Optional<Customer> c=cd.findById(i);
+				Customer cr = c.get();
+			  
+				IdCard idcar=cr.getIdcard();
+				Member memb=idcar.getMember();
+				
+				
+//				VaccineRegistration vr=new VaccineRegistration();
+				
 			  VaccineRegistration obj=new VaccineRegistration();
 			  obj.setMobileNumber(mobile);
 			  obj.setDateofRegistration(LocalDate.now());
+			  memb.setVaccineRegistration(obj);
 			 
-			    VaccineRegistration registraionDone=daoVacRegistration.save(obj);
+			      Member me=mdao.save(memb);
 			   
-			     return registraionDone;
+			     return me;
 		}
 		
 		

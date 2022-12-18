@@ -7,7 +7,9 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,9 +22,9 @@ public class VaccineRegistration {
 
 	private LocalDate dateofRegistration;
 	
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Member> memberList ;
+//	@JsonIgnore
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private Member memberList ;
 
 	public String getMobileNumber() {
 		return mobileNumber;
@@ -40,27 +42,30 @@ public class VaccineRegistration {
 		this.dateofRegistration = dateofRegistration;
 	}
 
-	public List<Member> getMemberList() {
-		return memberList;
-	}
+//	public Member getMemberList() {
+//		return memberList;
+//	}
+//
+//	public void setMemberList(Member memberList) {
+//		this.memberList = memberList;
+//	}
 
-	public void setMemberList(List<Member> memberList) {
-		this.memberList = memberList;
-	}
-
-	public VaccineRegistration(String mobileNumber, LocalDate dateofRegistration, List<Member> memberList) {
+	public VaccineRegistration(String mobileNumber, LocalDate dateofRegistration, Member memberList) {
 		super();
 		this.mobileNumber = mobileNumber;
 		this.dateofRegistration = dateofRegistration;
-		this.memberList = memberList;
+//		this.memberList = memberList;
+	}
+
+	@Override
+	public String toString() {
+		return "VaccineRegistration [mobileNumber=" + mobileNumber + ", dateofRegistration=" + dateofRegistration
+				+ ",]";
 	}
 
 	public VaccineRegistration() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
-
-
 	
 }
 
