@@ -38,8 +38,13 @@ public class Appointment {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dateofBooking;
 	
+	
+	
 	@Enumerated(EnumType.STRING)
 	private Slot slot;
+	
+	@Enumerated(EnumType.STRING)
+	private ChooseCenter choosecenter;
 	
 	private Boolean bookingStatus;
 	
@@ -106,6 +111,8 @@ public class Appointment {
 	public void setVaccinationCenter(VaccinationCenter vaccinationCenter) {
 		this.vaccinationCenter = vaccinationCenter;
 	}
+	
+	
 
 	public Appointment(Long bookingId,
 		 @NotNull(message = "Mobile number is mandatory")  @NotEmpty(message = "Mobile number is mandatory") String mobileNumber,
@@ -118,14 +125,22 @@ public class Appointment {
 		this.slot = slot;
 		this.bookingStatus = bookingStatus;
 		this.member = member;
-		this.vaccinationCenter = vaccinationCenter;
+//		this.vaccinationCenter = vaccinationCenter;
+	}
+
+	public ChooseCenter getChoosecenter() {
+		return choosecenter;
+	}
+
+	public void setChoosecenter(ChooseCenter choosecenter) {
+		this.choosecenter = choosecenter;
 	}
 
 	@Override
 	public String toString() {
 		return "Appointment [bookingId=" + bookingId + ", mobileNumber=" + mobileNumber + ", dateofBooking="
 				+ dateofBooking + ", slot=" + slot + ", bookingStatus=" + bookingStatus + ", member=" + member
-				+ ", vaccinationCenter=" + vaccinationCenter + "]";
+				+ ",]";
 	}
 	
 	public Appointment() {

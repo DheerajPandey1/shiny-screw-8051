@@ -84,10 +84,9 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/addappointment/{key}")
-	
-	public ResponseEntity<Appointment>addapp(@RequestBody Appointment appointment , @PathVariable("key") String key) throws MemberNotFoundException, AppointmentException{
+	public ResponseEntity<Appointment>addapp( @PathVariable("key") String key) throws MemberNotFoundException, AppointmentException{
 		
-		Appointment ap= as.addAppointment(appointment, key);
+		Appointment ap= as.addAppointment(key);
 		
 		return new ResponseEntity<Appointment>(ap,HttpStatus.OK);
 	}
