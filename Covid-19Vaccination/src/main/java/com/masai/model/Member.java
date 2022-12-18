@@ -39,10 +39,10 @@ public class Member {
 	private IdCard idCard;
 	
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private VaccineRegistration vaccineRegistration;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Vaccine vaccine;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "member")
