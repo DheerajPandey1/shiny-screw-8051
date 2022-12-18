@@ -38,15 +38,48 @@ public class VaccinationCenter{
 
 	@NotNull(message = "Pincode can not be null")
 	@NotBlank(message = "Pincode is Mandatory")
-	@Size(min = 6, max = 8)
+//	@Size(min = 6, max = 8)
 	private String pincode;
 	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Admin admin;
 	
 	@JsonIgnore
+
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Inventory inventory;
+	
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	private Vaccine vaccine;
+
+	public VaccinationCenter(Integer centerId,
+			@NotNull(message = "Center name can not be null") @NotBlank(message = "Center name is Mandatory") String centername,
+			@NotNull(message = "City can not be null") @NotBlank(message = "City name is Mandatory") String city,
+			@NotNull(message = "Address can not be null") @NotBlank(message = "Address is Mandatory") String address,
+			@NotNull(message = "State can not be null") @NotBlank(message = "State name is Mandatory") String state,
+			@NotNull(message = "Pincode can not be null") @NotBlank(message = "Pincode is Mandatory") String pincode,
+			Inventory inventory, Vaccine vaccine) {
+		super();
+		this.centerId = centerId;
+		this.centername = centername;
+		this.city = city;
+		this.address = address;
+		this.state = state;
+		this.pincode = pincode;
+		this.inventory = inventory;
+		this.vaccine = vaccine;
+	}
+
+	public Vaccine getVaccine() {
+		return vaccine;
+	}
+
+	public void setVaccine(Vaccine vaccine) {
+		this.vaccine = vaccine;
+	}
 
 	public Integer getCenterId() {
 		return centerId;
@@ -104,28 +137,13 @@ public class VaccinationCenter{
 		this.inventory = inventory;
 	}
 
-	public VaccinationCenter(Integer centerId,
-			@NotNull(message = "Center name can not be null") @NotBlank(message = "Center name is Mandatory") String centername,
-			@NotNull(message = "City can not be null") @NotBlank(message = "City name is Mandatory") String city,
-			@NotNull(message = "Address can not be null") @NotBlank(message = "Address is Mandatory") String address,
-			@NotNull(message = "State can not be null") @NotBlank(message = "State name is Mandatory") String state,
-			@NotNull(message = "Pincode can not be null") @NotBlank(message = "Pincode is Mandatory") @Size(min = 6, max = 8) String pincode,
-			Inventory inventory) {
-		super();
-		this.centerId = centerId;
-		this.centername = centername;
-		this.city = city;
-		this.address = address;
-		this.state = state;
-		this.pincode = pincode;
-		this.inventory = inventory;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "VaccinationCenter [centerId=" + centerId + ", centername=" + centername + ", city=" + city
 				+ ", address=" + address + ", state=" + state + ", pincode=" + pincode + ", inventory=" + inventory
-				+ "]";
+				+ ", vaccine=" + vaccine + "]";
 	}
 	
 	public VaccinationCenter() {
