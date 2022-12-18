@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class VaccinationCenter {
+public class VaccinationCenter{
 
 	
 	@Id
@@ -41,7 +41,13 @@ public class VaccinationCenter {
 //	@Size(min = 6, max = 8)
 	private String pincode;
 	
-//	@JsonIgnore
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private Admin admin;
+	
+	@JsonIgnore
+
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Inventory inventory;
 	

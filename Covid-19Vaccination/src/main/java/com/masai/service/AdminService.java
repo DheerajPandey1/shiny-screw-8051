@@ -8,7 +8,7 @@ import com.masai.model.Admin;
 public interface AdminService {
 
 //	@Service
-public Admin registerAdmin(Admin admin)  ;
+     public Admin registerAdmin(Admin admin)  ;
 	
 	public Admin updateAdmin(Admin admin)throws AdminException ;
 	

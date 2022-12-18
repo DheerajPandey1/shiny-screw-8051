@@ -1,24 +1,28 @@
 package com.masai.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Admin {
+public class Admin{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer adminId ;
 	
-	@NotNull(message = "Customer Name ")
+	@NotNull(message = "Admin Name")
 	private String adminName ;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	private VaccinationCenter vaccinationCenter;
 //	@Size(min = 9  , max = 10 , message = "Please Enter valid mobile no ")
 //	@NotNull(message = "Mobile number is mandatory")
 //	@Pattern(regexp =  "^[7-9][0-9]9$")
@@ -30,9 +34,13 @@ public class Admin {
 	@Size(min = 8 ,max = 20)
 	private String password ;
 	
-	@Email
+//	@Email
 	@NotNull(message = "Email is mandatory")
 	private String email ;
+	
+	
+	
+	
 
 	public Integer getAdminId() {
 		return adminId;

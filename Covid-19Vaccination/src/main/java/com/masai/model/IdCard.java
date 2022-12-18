@@ -2,6 +2,7 @@ package com.masai.model;
 
 import java.time.LocalDate;
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -31,7 +32,7 @@ public class IdCard {
 	private String name;
 	
 	@NotNull(message = "Id Gender can not be Null.Please Add Proper Gender")
-	@Pattern(regexp = "^[A-Z][a-z]*")
+//	@Pattern(regexp = "^[A-Z][a-z]*")
 	private String gender;
 	
 	@NotNull(message = "Id Address can not be Null.Please Add Proper Address")
@@ -174,7 +175,7 @@ public class IdCard {
 
 	public IdCard(Integer id,
 			@NotNull(message = "Id name can not be Null.Please Add Proper Name") @NotBlank(message = "Id name can not be Blank.Name is Mandotory") String name,
-			@NotNull(message = "Id Gender can not be Null.Please Add Proper Gender") @Pattern(regexp = "^[A-Z][a-z]*") String gender,
+			@NotNull(message = "Id Gender can not be Null.Please Add Proper Gender")  String gender,
 			@NotNull(message = "Id Address can not be Null.Please Add Proper Address") String address,
 			@NotNull(message = "Id city can not be Null.Please Add Proper city") String city,
 			@NotNull(message = "Id state can not be Null.Please Add Proper state") String state,

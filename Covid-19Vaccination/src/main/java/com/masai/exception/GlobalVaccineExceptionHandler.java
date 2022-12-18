@@ -207,25 +207,25 @@ public ResponseEntity<MyErrorDetails> methodArgumentNotValidExceptionHandler(Met
 	return new ResponseEntity<>(err, HttpStatus.FORBIDDEN);
 }
 
-@ExceptionHandler(RollbackException.class)
-public ResponseEntity<MyErrorDetails> handleRollbackException(Exception exp, WebRequest req) {
-	MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
-			"Improper arguments passed in jason. Validation failed", req.getDescription(false));
-
-	return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
-}
-@ExceptionHandler(Exception.class)
-public ResponseEntity<MyErrorDetails> SendExceptionMessage(Exception e, WebRequest wr){
-	
-	    MyErrorDetails mrd= new MyErrorDetails();
-	    
-	    mrd.setTimestap(LocalDateTime.now());
-	    mrd.setMessage(e.getMessage());
-	    mrd.setDetails(wr.getDescription(false));
-	    
-	    return new ResponseEntity<MyErrorDetails>(mrd, HttpStatus.BAD_REQUEST);
-	    
-}
+//@ExceptionHandler(RollbackException.class)
+//public ResponseEntity<MyErrorDetails> handleRollbackException(Exception exp, WebRequest req) {
+//	MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),
+//			"Improper arguments passed in jason. Validation failed", req.getDescription(false));
+//
+//	return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+//}
+//@ExceptionHandler(Exception.class)
+//public ResponseEntity<MyErrorDetails> SendExceptionMessage(Exception e, WebRequest wr){
+//	
+//	    MyErrorDetails mrd= new MyErrorDetails();
+//	    
+//	    mrd.setTimestap(LocalDateTime.now());
+//	    mrd.setMessage(e.getMessage());
+//	    mrd.setDetails(wr.getDescription(false));
+//	    
+//	    return new ResponseEntity<MyErrorDetails>(mrd, HttpStatus.BAD_REQUEST);
+//	    
+//}
 
 
 
