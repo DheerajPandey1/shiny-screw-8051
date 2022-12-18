@@ -3,6 +3,7 @@ package com.masai.model;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,7 @@ public class IdCard {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(unique = true)
 	private Integer id;
 	
 
