@@ -9,6 +9,7 @@
 
 
 <h2> Logo </h2>
+<img src="https://user-images.githubusercontent.com/105916680/208608266-bd0fb9e9-d502-4d4e-9361-c19c0924d2e8.jpg" />
 ![IMG-20221214-WA0000](https://user-images.githubusercontent.com/105916680/208608266-bd0fb9e9-d502-4d4e-9361-c19c0924d2e8.jpg)
 
 
