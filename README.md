@@ -6,9 +6,6 @@
 
 <h3> Functionalaties </h3>
 
-<li> Login </li>
-<li> Signup </li>
-
 <h3> Customer </h3>
 
 <li> Login </li>
@@ -22,7 +19,7 @@
 
 <li> Login </li>
 <li> Signup </li>
-<li>Admin can register to customer <li>
+<li>Admin can register to customer </li>
 <li> Admin can add vaccine in inventory </li>
 <li> Admin can update and delete vaccine from inventory </li>
 
