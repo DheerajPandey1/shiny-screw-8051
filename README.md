@@ -21,7 +21,7 @@
 <li> Signup </li>
 <li>Admin can register to customer </li>
 <li> Admin can add vaccine in inventory </li>
-<li> Admin can update and delete vaccine from inventory </li>
+<li> Admin can update , delete , find vaccine from inventory </li>
 
 <h3> Tech Stack </h3>
 <h4> Java, Spring Boot, Maven, MySql , Swagger </h4>
