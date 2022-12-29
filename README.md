@@ -13,5 +13,5 @@
 
 
 <h3> Tech Stack </h3>
-<h4> Java, Spring Boot, Maven, MySql,
+<h4> Java, Spring Boot, Maven, MySql , Swagger </h4>
 
