@@ -23,12 +23,31 @@
 <li> Admin can add vaccine in inventory </li>
 <li> Admin can update and delete vaccine from inventory </li>
 
+<h3> Tech Stack </h3>
+<h4> Java, Spring Boot, Maven, MySql , Swagger </h4>
+
+	<h3> External Libraries </h3>
+  
+		<p>	spring-boot-starter-data-jpa </p>
+      
+		<p>	springfox-boot-starter </p>
+		
+  	<p>	spring-boot-starter-validation </p>
+		
+	   <p>	spring-boot-starter-web </p>
+		
+			<p> spring-boot-devtools </p>
+			
+		
+			<p> mysql-connector-j </p>
+			
+			
+
 
 <h2> Logo </h2>
 <img src="https://user-images.githubusercontent.com/105916680/208608266-bd0fb9e9-d502-4d4e-9361-c19c0924d2e8.jpg" />
 
 
 
-<h3> Tech Stack </h3>
-<h4> Java, Spring Boot, Maven, MySql , Swagger </h4>
+
 
