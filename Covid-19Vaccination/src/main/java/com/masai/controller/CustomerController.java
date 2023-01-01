@@ -165,7 +165,7 @@ public class CustomerController {
 	
 	
 	@GetMapping("/statusget/{key}")
-	public ResponseEntity<Member>memberStatus(@PathVariable("key") String key){
+	public ResponseEntity<Member>memberStatus(@PathVariable("key") String key)throws CustomerException{
 		Member c=cudao.getmemberstatus(key);
 		
 		return new ResponseEntity<>(c,HttpStatus.ACCEPTED);

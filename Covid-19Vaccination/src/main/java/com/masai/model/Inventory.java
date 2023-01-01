@@ -13,21 +13,26 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Inventory {
 
+	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer inventoryId;
+	
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	@NotNull(message = "Date should not be Null")
 	private LocalDate date;
 	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy= "inventory")
 	private List<VaccinationCenter> ListvaccinationCenter;
 	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL, mappedBy= "inventory")
 	private VaccineCount vaccinecountList;
 	
