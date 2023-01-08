@@ -89,12 +89,15 @@ Optional<Customer> customer2 = cdao.findById(customer.getCustomerId()) ;
 	}
 	
 	
-	public Member getmemberstatus(String key) {
+	public Member getmemberstatus(String key) throws CustomerException {
 		CustomerLoginSession cls=clsd.findByUuid(key);
 		Integer i= cls.getCustomerId();
 		Optional<Customer> c=cdao.findById(i);
 		Customer cr = c.get();
 		IdCard ic=cr.getIdcard();
+		if(ic==null) {
+			throw new CustomerException("Please fill your id card first...");
+		}
 		return ic.getMember();
 		
 		

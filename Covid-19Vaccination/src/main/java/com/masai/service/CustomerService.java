@@ -17,6 +17,6 @@ public Customer registerCustomer(Customer customer) throws CustomerException  ;
 	
 	public Customer deleteCustomerById(Integer customerId)throws CustomerException ;
 	
-	public Member getmemberstatus(String key);
+	public Member getmemberstatus(String key)throws CustomerException;
 	
 }

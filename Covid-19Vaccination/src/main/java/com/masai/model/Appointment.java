@@ -32,7 +32,7 @@ public class Appointment {
 //	@NotNull(message = "Mobile number is mandatory")
 //	@Pattern(regexp =  "^[7-9][0-9]9$")
 	@NotEmpty(message = "Mobile number is mandatory")
-	@Column(unique = true)
+//	@Column(unique = true)
 	private String mobileNumber;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")

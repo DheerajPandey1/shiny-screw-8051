@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.AppointmentException;
+import com.masai.exception.CustomerException;
 import com.masai.exception.MemberNotFoundException;
 import com.masai.model.AdminLoginSession;
 import com.masai.model.Appointment;
@@ -17,6 +18,7 @@ import com.masai.model.CustomerLoginSession;
 import com.masai.model.IdCard;
 import com.masai.model.Member;
 import com.masai.model.Slot;
+import com.masai.model.Vaccine;
 import com.masai.repo.AdminLoginSessionDao;
 import com.masai.repo.AppointmentDao;
 import com.masai.repo.CustomerDao;
@@ -26,6 +28,8 @@ import com.masai.repo.MemberDao;
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
 
+//	@Autowired
+//	private Vaccine vacc;
 	@Autowired
 	private AppointmentDao appointmentDao;
 	
@@ -67,10 +71,10 @@ AdminLoginSession adminLoginSession = adminLoginSessionDao.findByUuid(key);
 		
 		CustomerLoginSession customerLoginSession = clsd.findByUuid(key);
 			
-//			if(adminLoginSession==null && customerLoginSession==null) {
-//				
-//				throw new RuntimeException("Unauthorised access");
-//			}
+			if(customerLoginSession==null) {
+				
+				throw new RuntimeException("Please Login first...");
+			}
 			
 			
 		Optional<Appointment> opt =  appointmentDao.findById(bookingId) ;
@@ -91,13 +95,12 @@ AdminLoginSession adminLoginSession = adminLoginSessionDao.findByUuid(key);
 		
 //	          AdminLoginSession adminLoginSession = adminLoginSessionDao.findByUuid(key);
 		
-		
-			
-//			CustomerLoginSession customerLoginSession = clsd.findByUuid(key);
-		 
-		
+	
 		CustomerLoginSession clas =clsd.findByUuid(key);
-			Integer i= clas.getCustomerId();
+		if(clas==null) {
+			throw new MemberNotFoundException("Please login first..");
+		}
+			int i= clas.getCustomerId();
 			Optional<Customer> c=cdao.findById(i);
 			Customer cr = c.get();
 		  
@@ -105,7 +108,7 @@ AdminLoginSession adminLoginSession = adminLoginSessionDao.findByUuid(key);
 			Member memb=idcar.getMember();
 			
 		Appointment ap=new Appointment();
-		memb.setAppointment(ap);
+		
 		ap.setMobileNumber(memb.getVaccineRegistration().getMobileNumber());
 		ap.setDateofBooking(LocalDate.now());
 		
@@ -113,6 +116,22 @@ AdminLoginSession adminLoginSession = adminLoginSessionDao.findByUuid(key);
 		ap.setSlot(Slot.SLOT1);
 		ap.setBookingStatus(true);
 		ap.setChoosecenter(ChooseCenter.Sanjeevni);
+		
+		Boolean tem=true;
+		memb.setAppointment(ap);
+		if(memb.getDose1status().equals(tem)|| memb.getDose1status()==tem ) {
+			memb.setDose2date(LocalDate.now());
+			memb.setDose2status(true);
+			
+			memb.setVaccineName("fighter");
+		}
+		else {
+			memb.setDose1date(LocalDate.now());
+			memb.setDose1status(true);
+//			memb.setVaccineName("fighter");
+		}
+		
+	
 		
 		
 				return appointmentDao.save(ap);

@@ -35,107 +35,186 @@ public class Member {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dose2date;
 	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private IdCard idCard;
 	
-	@JsonIgnore
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private VaccineRegistration vaccineRegistration;
 	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Vaccine vaccine;
 	
+	private String vaccineName;
+	
+	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "member")
 	private  Appointment appointment;
 
 
 
-public Member(Integer memberId, Boolean dose1status, Boolean dose2status, LocalDate dose1date, LocalDate dose2date,
-			IdCard idCard, VaccineRegistration vaccineRegistration, Vaccine vaccine, Appointment appointment) {
-		super();
-		this.memberId = memberId;
-		this.dose1status = dose1status;
-		this.dose2status = dose2status;
-		this.dose1date = dose1date;
-		this.dose2date = dose2date;
-		this.idCard = idCard;
-		this.vaccineRegistration = vaccineRegistration;
-		this.vaccine = vaccine;
-		this.appointment = appointment;
-	}
 
 
 	public Integer getMemberId() {
 		return memberId;
 	}
 
+
+
+
+
 	public void setMemberId(Integer memberId) {
 		this.memberId = memberId;
 	}
+
+
+
+
 
 	public Boolean getDose1status() {
 		return dose1status;
 	}
 
+
+
+
+
 	public void setDose1status(Boolean dose1status) {
 		this.dose1status = dose1status;
 	}
+
+
+
+
 
 	public Boolean getDose2status() {
 		return dose2status;
 	}
 
+
+
+
+
 	public void setDose2status(Boolean dose2status) {
 		this.dose2status = dose2status;
 	}
+
+
+
+
 
 	public LocalDate getDose1date() {
 		return dose1date;
 	}
 
+
+
+
+
 	public void setDose1date(LocalDate dose1date) {
 		this.dose1date = dose1date;
 	}
+
+
+
+
 
 	public LocalDate getDose2date() {
 		return dose2date;
 	}
 
+
+
+
+
 	public void setDose2date(LocalDate dose2date) {
 		this.dose2date = dose2date;
 	}
+
+
+
+
 
 	public IdCard getIdCard() {
 		return idCard;
 	}
 
+
+
+
+
 	public void setIdCard(IdCard idCard) {
 		this.idCard = idCard;
 	}
+
+
+
+
 
 	public VaccineRegistration getVaccineRegistration() {
 		return vaccineRegistration;
 	}
 
+
+
+
+
 	public void setVaccineRegistration(VaccineRegistration vaccineRegistration) {
 		this.vaccineRegistration = vaccineRegistration;
 	}
+
+
+
+
 
 	public Vaccine getVaccine() {
 		return vaccine;
 	}
 
+
+
+
+
 	public void setVaccine(Vaccine vaccine) {
 		this.vaccine = vaccine;
 	}
+
+
+
+
+
+	public String getVaccineName() {
+		return vaccineName;
+	}
+
+
+
+
+
+	public void setVaccineName(String vaccineName) {
+		this.vaccineName = vaccineName;
+	}
+
+
+
+
 
 	public Appointment getAppointment() {
 		return appointment;
 	}
 
+
+
+
+
 	public void setAppointment(Appointment appointment) {
 		this.appointment = appointment;
 	}
+
+
 
 
 
